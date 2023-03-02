@@ -1,13 +1,18 @@
 import React from "react";
 import "./App.css";
-import { Box } from "@mui/material";
 import { ClassifierPage } from "./pages/ClassifierPage";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT ?? "",
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <Box>
+    <ApolloProvider client={client}>
       <ClassifierPage />
-    </Box>
+    </ApolloProvider>
   );
 }
 
