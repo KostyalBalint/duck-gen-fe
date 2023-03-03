@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import GaugeChart from "react-gauge-chart";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
@@ -66,7 +65,10 @@ export function Stats(props: {
         )}
       </Box>
       <Typography variant="h5" textAlign="center" sx={{ mt: 3 }}>
-        Verified duck percentage: {(verifiedDucksPercentage * 100).toFixed(2)} %
+        Verified duck percentage
+      </Typography>
+      <Typography variant="h5" sx={{ mt: 3 }}>
+        {(verifiedDucksPercentage * 100).toFixed(2)} %
       </Typography>
     </Stack>
   );

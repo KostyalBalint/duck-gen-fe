@@ -4,6 +4,8 @@ import {
   Card,
   Container,
   IconButton,
+  Modal,
+  Paper,
   Stack,
   Typography,
 } from "@mui/material";
@@ -24,7 +26,7 @@ import {
 import { Stats } from "../components/Stats";
 import { UndoRounded } from "@mui/icons-material";
 
-declare type Direction = "left" | "right";
+declare type Direction = "left" | "right" | null;
 
 export const ClassifierPage = () => {
   const image = useGetNonVerifiedImageQuery({
@@ -34,7 +36,8 @@ export const ClassifierPage = () => {
   });
   const [verifiedImages, setVerifiedImages] = useState<string[]>([]);
   const [imageData, setImageData] = useState(image.data?.nonVerifiedImage);
-  const [lastDirection, setLastDirection] = useState<Direction>("right");
+  const [lastDirection, setLastDirection] = useState<Direction>(null);
+  const [showModal, setShowModal] = useState(true);
 
   const stats = useStatsQuery();
 
@@ -80,8 +83,38 @@ export const ClassifierPage = () => {
 
   return (
     <Container sx={{ backgroundColor: blueGrey[300], minHeight: "100vh" }}>
+      <Modal open={showModal}>
+        <Stack
+          sx={{ width: "100vw", height: "100vh" }}
+          justifyContent="center"
+          alignItems={"center"}
+        >
+          <Paper sx={{ m: 3, p: 3 }} elevation={2}>
+            <Typography variant="h6">Kérlek légy felelősséggel</Typography>
+            <Typography variant="body1" sx={{ mt: 3 }}>
+              A projekt az önálló laboratóriumi munka része, melynek célja képek
+              generálása diffúziós modellel. Az itt megjelenő képek fogják
+              képezni a tanító adatbázist. A végeredmény pedig csak annyira lesz
+              jó, amennyire az adatok.
+            </Typography>
+            <Typography variant="body1" sx={{ mt: 1 }}>
+              Abban az esetben ha nem szeretnéd segíten a munkámat, kélek ne
+              használd az oldalt.
+            </Typography>
+            <Button
+              sx={{ mt: 1 }}
+              color="success"
+              variant="contained"
+              onClick={() => setShowModal(false)}
+            >
+              {" "}
+              Vágjunk bele!{" "}
+            </Button>
+          </Paper>
+        </Stack>
+      </Modal>
       <Typography variant="h2" textAlign="center" sx={{ mb: 2 }}>
-        Duck Classifier
+        Duck
       </Typography>
       <Stack alignItems="center" gap={2}>
         <Card
@@ -94,7 +127,7 @@ export const ClassifierPage = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             width: "80vw",
-            maxWidth: "500px",
+            maxWidth: "400px",
             transition: "all 0.5s ease",
             aspectRatio: "1/1",
           }}

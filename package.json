@@ -10,6 +10,7 @@
     "@graphql-codegen/typescript-operations": "^3.0.1",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@mui/icons-material": "^5.11.11",
+    "@mui/joy": "^5.0.0-alpha.69",
     "@mui/material": "^5.11.11",
     "@react-spring/web": "^9.5.5",
     "@testing-library/jest-dom": "^5.16.5",
