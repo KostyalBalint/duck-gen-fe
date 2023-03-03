@@ -1,0 +1,5 @@
+mutation verifyImage($id: ID!, $imageType: ImageType!){
+    verifyImage(id: $id, imageType: $imageType){
+        id
+    }
+}

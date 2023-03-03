@@ -1,0 +1,8 @@
+query stats{
+    stats {
+        totalImages
+        totalVerifiedImages
+        verifiedDucks
+        verifiedNotDucks
+    }
+}

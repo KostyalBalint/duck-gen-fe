@@ -1,0 +1,7 @@
+mutation unVerifyImage($id: ID!){
+    undoVerifyImage(id: $id){
+        id
+        fileName
+        imgUrl
+    }
+}
