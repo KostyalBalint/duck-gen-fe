@@ -61,7 +61,7 @@ export function Stats(props: {
         {props.loading ? (
           <LinearProgress />
         ) : (
-          <LinearProgressWithLabel value={progress} />
+          <LinearProgressWithLabel value={progress * 100} />
         )}
       </Box>
       <Typography variant="h5" textAlign="center" sx={{ mt: 3 }}>
